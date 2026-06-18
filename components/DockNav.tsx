@@ -6,7 +6,7 @@ import { navLinks } from "@/lib/site";
 import { dockIconMap } from "@/components/icons/dock-icons";
 
 export function DockNav() {
-  const [active, setActive] = useState(navLinks[0].href);
+  const [active, setActive] = useState<string>(navLinks[0].href);
 
   useEffect(() => {
     const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
@@ -45,7 +45,7 @@ export function DockNav() {
         {navLinks.map((link) => {
           const Icon = dockIconMap[link.href];
           const isActive = active === link.href;
-          const label = "shortLabel" in link ? link.shortLabel : link.label;
+          const label = link.shortLabel;
           return (
             <Link
               key={link.href}
